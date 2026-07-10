@@ -1,5 +1,4 @@
-# Raíz Familiar 🌳
-
+# Raíz Familiar 
 Aplicación web responsiva (enfoque PWA) para que las familias mexicanas preserven, organicen y compartan su historia familiar de forma privada.
 
 Proyecto desarrollado como parte de la asignatura **Desarrollo Web Integral** — Universidad Tecnológica de Puebla.
