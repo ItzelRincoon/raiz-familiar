@@ -84,6 +84,7 @@ git pull origin main
 
 ```bash
 git checkout -b feature/dashboard
+git checkout afb905e -- src/app/components/HomeDashboard.tsx
 git add src/app/components/HomeDashboard.tsx
 git commit -m "Panel principal: Home Dashboard"
 git push -u origin feature/dashboard

@@ -1,0 +1,11 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Cualquier usuario autenticado (aunque sea anónimo) puede leer y escribir
+    // el documento de su familia. Básico pero evita que gente sin la app
+    // (sin sesión) toque tus datos desde fuera.
+    match /families/{familyCode} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { TreePine } from 'lucide-react';
 import { useNavigate } from 'react-router';
 import { useAuth } from '../contexts/AuthContext';
@@ -5,11 +6,21 @@ import { useAuth } from '../contexts/AuthContext';
 export function OnboardingScreen() {
   const navigate = useNavigate();
   const { login } = useAuth();
+  const [error, setError] = useState('');
+  const [submitting, setSubmitting] = useState(false);
 
-  const handleEnter = (code: string) => {
-    if (code.trim()) {
-      login(code);
+  const handleEnter = async (code: string) => {
+    if (!code.trim() || submitting) return;
+    setError('');
+    setSubmitting(true);
+    try {
+      await login(code);
       navigate('/home');
+    } catch (err) {
+      console.error(err);
+      setError('No se pudo conectar. Revisa tu conexión e intenta de nuevo.');
+    } finally {
+      setSubmitting(false);
     }
   };
   return (
@@ -82,6 +93,7 @@ export function OnboardingScreen() {
             }}
           />
           <button
+            disabled={submitting}
             onClick={() => {
               const input = document.getElementById('familyCode') as HTMLInputElement;
               handleEnter(input.value);
@@ -97,7 +109,8 @@ export function OnboardingScreen() {
               color: 'white',
               border: 'none',
               borderRadius: '16px',
-              cursor: 'pointer',
+              cursor: submitting ? 'default' : 'pointer',
+              opacity: submitting ? 0.7 : 1,
               transition: 'transform 0.2s, box-shadow 0.2s',
               minHeight: '60px'
             }}
@@ -110,8 +123,13 @@ export function OnboardingScreen() {
               e.currentTarget.style.boxShadow = 'none';
             }}
           >
-            Entrar
+            {submitting ? 'Entrando...' : 'Entrar'}
           </button>
+          {error && (
+            <p style={{ color: '#B23A48', fontSize: '0.875rem', marginTop: '12px', textAlign: 'center', fontFamily: 'Inter, sans-serif' }}>
+              {error}
+            </p>
+          )}
         </div>
 
         <p style={{
