@@ -63,7 +63,7 @@ git pull origin main
 
 ---
 
-## 3. Módulo: Invitaciones / Grupo familiar
+## 3. Módulo: Invitaciones / Grupo familiar ya no ya paso
 
 ```bash
 git checkout -b feature/invitaciones
@@ -80,7 +80,7 @@ git pull origin main
 
 ---
 
-## 4. Módulo: Home Dashboard
+## 6. Módulo: Home Dashboard
 
 ```bash
 git checkout -b feature/dashboard
@@ -149,7 +149,11 @@ git pull origin main
 ---
 
 ## 8. Módulo: Cápsulas del tiempo
-
+git checkout main 
+git pull origin main
+git checkout -b feature/recetas
+git checkout afb905e -- src/app/components/TimeCapsules.tsx
+git status
 ```bash
 git checkout -b feature/capsulas-tiempo
 git add src/app/components/TimeCapsules.tsx
@@ -163,14 +167,16 @@ git pull origin main
 ```
 📸 Captura.
 
----
+---7
 
-## 9. Módulo: Tablero SOS
+## 7. Módulo: Tablero SOS
 
 ```bash
 git checkout -b feature/tablero-sos
+git checkout afb905e -- src/app/components/SOSTablon.tsx
+git status
 git add src/app/components/SOSTablon.tsx
-git commit -m "Modulo de Tablero SOS para emergencias familiares"
+git commit -m " Sprint 7 Modulo de Tablero SOS para emergencias familiares"
 git push -u origin feature/tablero-sos
 ```
 ➡️ Pull Request → Merge.
@@ -182,20 +188,21 @@ git pull origin main
 
 ---
 
-## 10. Módulo: Configuración
+## 8. Módulo: Configuración
 
 ```bash
 git checkout -b feature/configuracion
+git checkout afb905e -- src/app/components/SettingsScreen.tsx
+git status
 git add src/app/components/SettingsScreen.tsx
-git commit -m "Sprint 6: pantalla de configuracion y ajustes finales"
+git commit -m "Sprint 8: pantalla de configuracion y ajustes finales"
 git push -u origin feature/configuracion
 ```
-➡️ Pull Request → Merge.
+
 ```bash
 git checkout main
 git pull origin main
 ```
-📸 Captura.
 
 ---
 
